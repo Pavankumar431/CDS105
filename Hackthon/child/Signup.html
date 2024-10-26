@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Account - Kidsafe Zone</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .signup-container {
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.2);
+            width: 350px;
+            max-width: 80%;
+            text-align: center;
+            margin: 20px auto;
+        }
+        h2 {
+            color: #4CAF50;
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        label {
+            margin-top: 0.7rem;
+            color: #555;
+            font-size: 1rem;
+        }
+        input[type="text"],
+        input[type="email"],
+        input[type="password"],
+        input[type="tel"] {
+            padding: 0.6rem;
+            margin-top: 0.3rem;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 1rem;
+            outline: none;
+        }
+        #create-account {
+            margin-top: 1.5rem;
+            padding: 0.6rem;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 1.1rem;
+            cursor: pointer;
+        }
+        #create-account:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <a class="navbar-logo" href="home.html">
+            <img src="Img/logo.png" alt="Children Safety Logo" style="height: 70px; vertical-align: middle;">
+        </a>
+        <ul class="navbar-links">
+            <li><a href="home.html">For Parents (Age 0-3)</a></li>
+            <li><a href="#">Preschool (Age 4-7)</a></li>
+            <li><a href="#">Middle Childhood (Age 8-12)</a></li>
+            <li>
+                <input type="text" id="search-bar" placeholder="Search...">
+                <button id="search-button">&#128269;</button>
+            </li>
+            <li><a href="login.html" id="login">Login</a></li>
+        </ul>
+    </nav>
+    <div class="signup-container">
+        <h2>Create Account</h2>
+        <form id="signup-form">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required placeholder="Enter your username">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required placeholder="Enter your email">
+            <label for="mobile">Mobile No:</label>
+            <input type="tel" id="mobile" name="mobile" required placeholder="Enter your mobile number">
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required placeholder="Enter your password">
+            <label for="confirm-password">Confirm Password:</label>
+            <input type="password" id="confirm-password" name="confirm-password" required placeholder="Confirm your password">
+            <button id="create-account" type="submit">Create Account</button>
+        </form>
+    </div>
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section about">
+                <h3>About Kidsafe Zone</h3>
+                <p><span style="color: red;">Kidsafe Zone</span> is dedicated to providing resources and information to keep children safe and secure, covering topics for <span style="color: red;">parents</span>, <span style="color: red;">preschool</span>, and <span style="color: red;">middle childhood</span>.</p>
+            </div>
+            <div class="footer-section links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="home.html">Home</a></li>
+                    <li><a href="#">Safety Tips</a></li>
+                    <li><a href="#">Resources</a></li>
+                    <li><a href="login.html">Login</a></li>
+                </ul>
+            </div>
+            <div class="footer-section contact">
+                <h3>Contact Us</h3>
+                <p>Email: support@kidsafezone.com</p>
+                <p>Phone: +1 (123) 456-7890</p>
+            </div>
+        </div>
+    </footer>
+    <script>
+        document.getElementById("signup-form").addEventListener("submit", function(event) {
+            event.preventDefault();
+            const username = document.getElementById("username").value;
+            const email = document.getElementById("email").value;
+            const mobile = document.getElementById("mobile").value;
+            const password = document.getElementById("password").value;
+            const confirmPassword = document.getElementById("confirm-password").value;
+
+            // Email validation
+            if (!email.endsWith("@gmail.com")) {
+                alert("Error: Email must end with @gail.com");
+                return;
+            }
+
+            // Password match validation
+            if (password !== confirmPassword) {
+                alert("Error: Passwords do not match!");
+                return;
+            }
+
+            alert("Congratulations! Your account has been created.");
+            window.location.href = 'login.html';
+
+            // Create user data
+            const userData = {
+                username,
+                email,
+                mobile,
+                password
+            };
+
+            // Post user data to backend API (commented out since we don't have the backend URL)
+            /*
+            fetch('your-backend-api-url/signup', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(userData)
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    window.location.href = 'login.html';
+                } else {
+                    alert("Error: " + data.message);
+                }
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
+            */
+        });
+    </script>
+</body>
+</html>
+
+
+
